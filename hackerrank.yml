@@ -1,0 +1,16 @@
+version: 1.0
+configuration:
+  has_webserver: false
+  readonly_paths:
+    - LibraryService.Tests/IntegrationTests.cs
+  scoring:
+    command: rm -rf reports && dotnet build && dotnet test --logger xunit --results-directory ./reports/
+    files: [reports/TestResults.xml]
+  ide_config:
+    default_open_files:
+      - LibraryService.WebAPI/Controllers/BooksController.cs
+      - LibraryService.WebAPI/Controllers/LibrariesController.cs
+      - LibraryService.WebAPI/Startup.cs
+    project_menu:
+      install: dotnet build
+      test: rm -rf reports && dotnet build && dotnet test --logger xunit --results-directory ./reports/
